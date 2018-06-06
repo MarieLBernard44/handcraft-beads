@@ -1,0 +1,74 @@
+page-home {
+    .toolbar-background-md {
+        background: linear-gradient(42deg,#f50f5c,#f99523);
+    }
+    .toolbar-title-md {
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .item-md {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .item-input .label-md {
+        color: #999;
+        font-size: 12px;
+        text-transform: initial;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .list-md .item-block .item-inner {
+        border: 1px solid #dedede;
+        border-bottom: 0;
+    }
+
+    .choix-grille {
+        margin-top: 20%;
+    }
+
+    button.item-cover {
+        border: 1px solid #dedede;
+    }
+
+    .valider {
+        background: #f99523;
+        color: #fff;
+        border-radius: 20px;
+        margin-top: 32px;
+        padding: 2rem;
+    }
+
+    P {
+        margin: 0;
+    }
+
+    .input-md[clearInput] .text-input {
+        color: black;
+        text-align: center;
+    }
+
+    .input-md[clearInput] .text-input {
+        padding-right: 0;
+    }
+
+    ion-footer {
+        p {
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #5f5f5f;
+        }
+    }
+    
+}

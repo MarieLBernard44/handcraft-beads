@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Handcraft Beads
+    </ion-title>
+  </ion-navbar>
+     
+</ion-header>
+
+<ion-content padding>
+  
+  <p>
+    Bienvenue à toutes les perleuses, les amoureuses du tissage, les fans de bricktitch et peyote ! <br/>
+  </p>
+
+  
+  <div class="choix-grille">
+
+      <ion-list>
+          <ion-row>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label stacked>Nombre de lignes : </ion-label>
+                <ion-input type="number" [(ngModel)]="ligne" required="true" clearInput=true min="1" max="100"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-6>
+                <ion-item>
+                  <ion-label stacked>Nombre de colonnes :</ion-label>
+                  <ion-input type="number" [(ngModel)]="colonne" required="true" clearInput=true min="1" max="100"></ion-input>
+                </ion-item>
+              </ion-col>
+          </ion-row>
+      </ion-list>
+    
+      <ion-list>
+          <ion-item>
+              <ion-label>Type de tissage</ion-label>
+              <ion-select [(ngModel)]="type">
+                <ion-option>Loom</ion-option>
+                <ion-option>Brickstitch / Peyote</ion-option>
+              </ion-select>
+          </ion-item>   
+      </ion-list>
+    
+      <button class="valider" ion-button full (click)="goToGrille()" icon-left><ion-icon name="create"></ion-icon> Tissez !</button>
+    
+    </div>
+  
+  
+  
+  
+</ion-content>
+
+<ion-footer>
+  <img src="../../assets/imgs/plume.jpg"/>
+  <p> &copy; 2018 - Create with &hearts; by Marie-Louise Bernard </p>
+</ion-footer>
+
+

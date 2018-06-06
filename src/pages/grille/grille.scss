@@ -1,0 +1,77 @@
+page-grille {
+    .list-md {
+        margin: 0;
+    }
+
+    .item-select .label-md {
+        color: #fff;
+    }
+
+    .select-md .select-icon .select-icon-inner {
+        color: #fff;
+    }
+
+    ion-icon {
+        margin-right: 10px;
+    }
+
+    .ion-md-arrow-dropright-circle,
+    .ion-md-arrow-dropleft-circle,
+    .ion-md-download,
+    .ion-md-remove-circle
+     {
+       color: #f50f5c;
+       padding: 0;
+    }
+
+    img {
+        //padding: 0 2.5rem;
+        height: 100%;
+    }
+
+    .download {
+        text-align: right;
+    }
+
+    .outils {
+        background: #fff;
+        padding: 0px 10px;
+        border-radius: 10px;
+        ion-col {
+            padding: 0;
+        }
+    }
+    .toolbar-background-md {
+        background: linear-gradient(42deg,#f50f5c,#f99523);
+    }
+    .toolbar-title-md {
+        color: #fff;
+        text-transform: uppercase;
+    }
+    .bar-button-default-md {
+        color: #fff;
+    }
+    .item-md {
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        font-size: 1.6rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+   
+    #grille {
+        .perle {
+            height: 15px;
+            width: 15px;
+            border-radius: 5px;
+            border: 1px solid #5f5f5f;
+        }
+    }
+
+}
