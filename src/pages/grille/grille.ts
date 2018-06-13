@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PickColorProvider } from '../../providers/pick-color/pick-color';
+// import { PickColorProvider } from '../../providers/pick-color/pick-color';
 
 
 
@@ -28,11 +29,12 @@ export class GrillePage {
   public grille: any;
   public type: string;
   public color: string;
+  public couleur: string;
   public perle: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pcp: PickColorProvider) {
-    this.color = this.pcp.color;
-    console.log('COULEUR: ', this.color)
+  constructor(public navCtrl: NavController, public navParams: NavParams, public pcp:PickColorProvider) {
+    // this.color = this.pcp.color;
+    // console.log('COULEUR: ', this.color)
   }
 
 
@@ -69,11 +71,11 @@ export class GrillePage {
   }
 
   /* Je récupère la couleur sélectionnée dans le select-option */
-  // public pickColor(ref){
-  //   this.pcp.color = ref;
-  //   this.color = this.pcp.color;
-  //   console.log('La couleur séléctionnée dans le provider: ', this.color);
-  // }
+  public pickColor(ref){
+    this.color = ref;
+    localStorage.setItem('Couleur', this.color);
+    console.log('COULEUR: ', this.color);
+  }
   
   // public getColorSelected(ref) {
   //   this.color = this.pcp.pickColor(ref);
@@ -82,12 +84,11 @@ export class GrillePage {
 
   /* Je colore la perle avec la couleur séléctionnée */
   public colorize() {
-    this.color = this.pcp.getColor();
-    console.log('La couleeeeeeeeeeeuuuuuuurrr!!! : ', this.pcp.color);
-    console.log("La perleeeeeeeeuuuuuuuh: ", this.nouvellePerle);
+    this.couleur = localStorage.getItem('Couleur');
+    console.log('COULEUR A UTILISER : ', this.couleur);
     this.nouvellePerle.addEventListener("click", function (e) {
-      e.target.style.backgroundColor = "pink";
-      console.log("J'ai coloré en rose", this.pcp.color);
+      e.target.style.backgroundColor = this.couleur;
+      console.log("J'ai coloré en rose", this.couleur);
     });
   }
 
