@@ -35,6 +35,8 @@
 
 <ion-content padding>
 
+    <p> Référence séléctionnée: {{ref}}</p>
+
     <div id="grille"></div>
 
 
@@ -46,13 +48,13 @@
             <ion-item>
               <ion-label><ion-icon name="search"></ion-icon>
                 Références des perles </ion-label>
-              <ion-select [(ngModel)]="ref">               
-                <ion-option value="DB0001">DB0001</ion-option>
-                <ion-option value="DB0002">DB0002</ion-option>
-                <ion-option value="DB0003">DB0003</ion-option>
-                <ion-option value="DB0004">DB0004</ion-option>
-                <ion-option value="DB0005">DB0005</ion-option>
-                <ion-option value="DB0006">DB0006</ion-option>
+              <ion-select [(ngModel)]="ref" (ionChange)="this.pcp.pickColor(ref)">               
+                <ion-option value="black">DB0001</ion-option>
+                <ion-option value="red">DB0002</ion-option>
+                <ion-option value="white">DB0003</ion-option>
+                <ion-option value="yellow">DB0004</ion-option>
+                <ion-option value="blue">DB0005</ion-option>
+                <ion-option value="green">DB0006</ion-option>
               </ion-select>
             </ion-item>
           </ion-list>

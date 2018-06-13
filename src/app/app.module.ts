@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { GrillePage } from '../pages/grille/grille';
 import { GrillePageModule } from '../pages/grille/grille.module';
+import { PickColorProvider } from '../providers/pick-color/pick-color';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { GrillePageModule } from '../pages/grille/grille.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PickColorProvider
   ]
 })
 export class AppModule {}

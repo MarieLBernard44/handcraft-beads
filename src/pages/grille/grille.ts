@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PickColorProvider } from '../../providers/pick-color/pick-color';
+
+
 
 /**
  * Generated class for the GrillePage page.
@@ -24,9 +27,14 @@ export class GrillePage {
   public nouvellePerle: any;
   public grille: any;
   public type: string;
+  public color: string;
+  public perle: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pcp: PickColorProvider) {
+    this.color = this.pcp.color;
+    console.log('COULEUR: ', this.color)
   }
+
 
   ionViewDidLoad() {
     this.colonne = this.navParams.get('colonne');
@@ -35,7 +43,11 @@ export class GrillePage {
     console.log(this.colonne, this.ligne, this.type);
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+    this.chargerGrille();
+  }
+
+  public chargerGrille() {
     this.grille = document.getElementById('grille');
     for (this.i=0; this.i<this.ligne; this.i++) {
       this.nouvelleLigne = document.createElement("div");
@@ -50,10 +62,39 @@ export class GrillePage {
       for (this.j=0; this.j<this.colonne; this.j++) {
         this.nouvellePerle = document.createElement("div");
         this.nouvellePerle.className="perle";
+        this.colorize();
         this.nouvelleLigne.appendChild(this.nouvellePerle);
       } 
-    }  
+    }
   }
+
+  /* Je récupère la couleur sélectionnée dans le select-option */
+  // public pickColor(ref){
+  //   this.pcp.color = ref;
+  //   this.color = this.pcp.color;
+  //   console.log('La couleur séléctionnée dans le provider: ', this.color);
+  // }
+  
+  // public getColorSelected(ref) {
+  //   this.color = this.pcp.pickColor(ref);
+  //   console.log('Ici j\'attrape la couleur...', this.color);
+  // }
+
+  /* Je colore la perle avec la couleur séléctionnée */
+  public colorize() {
+    this.color = this.pcp.getColor();
+    console.log('La couleeeeeeeeeeeuuuuuuurrr!!! : ', this.pcp.color);
+    console.log("La perleeeeeeeeuuuuuuuh: ", this.nouvellePerle);
+    this.nouvellePerle.addEventListener("click", function (e) {
+      e.target.style.backgroundColor = "pink";
+      console.log("J'ai coloré en rose", this.pcp.color);
+    });
+  }
+
+  //   // this.nouvellePerle.onclick = function(e) {
+  //   //   e.target.style.backgroundColor = this.color;
+  //   // }
+  // }
 
   public effacerPerle() {
     console.log("Perle(s) supprimée(s) !!");
