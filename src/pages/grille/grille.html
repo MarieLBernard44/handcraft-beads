@@ -37,7 +37,13 @@
 
     <p> Référence séléctionnée: {{ref}}</p>
 
-    <div id="grille"></div>
+    <div id="grille">
+      <div *ngFor="let ligne of perles" class="ligne row">
+        <div *ngFor="let perle of ligne" class="perle" (click)="applyColor(perle)" [style.backgroundColor]="perle.color">
+
+        </div>
+      </div>
+    </div>
 
 
 </ion-content>
