@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Perle } from '../../models/perle';
+import { PERLES } from '../../mock/perles';
 
 /*
   Generated class for the PickColorProvider provider.
@@ -15,7 +17,9 @@ export class PickColorProvider {
     console.log('Hello PickColorProvider Provider');
   }
 
-
+  getPerlesRef(): Perle[] {
+    return PERLES;
+  }
 
 
 }

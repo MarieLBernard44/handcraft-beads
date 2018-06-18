@@ -11,58 +11,84 @@
   </ion-navbar>
 
   <ion-row class="outils">
-      <ion-col col-3>
-        <button ion-button clear icon-only (click)="effacerPerle()"> <!--EFFACER-->
-          <ion-icon name="remove-circle"></ion-icon>
-        </button>
-      </ion-col>
-      <ion-col col-4>
-        <button ion-button clear icon-only (click)="retourArriere()"> <!-- RETOUR ARRIERE -->
-          <ion-icon name="arrow-dropleft-circle"></ion-icon>
-        </button>
-        <button ion-button clear icon-only (click)="retourAvant()"> <!-- RETOUR AVANT -->
-          <ion-icon name="arrow-dropright-circle"></ion-icon>
-        </button>
-      </ion-col>  
-      <ion-col col-3 offset-2 class="download">
-        <button ion-button clear icon-only (click)="download()"> <!-- TELECHARGEMENT PDF -->
-          <ion-icon name="download"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
+    <!-- MENU -->
+    <ion-col col-3>
+      <button ion-button clear icon-only (click)="effacerPerle()">
+        <!--EFFACER-->
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button clear icon-only (click)="retourArriere()">
+        <!-- RETOUR ARRIERE -->
+        <ion-icon name="arrow-dropleft-circle"></ion-icon>
+      </button>
+      <button ion-button clear icon-only (click)="retourAvant()">
+        <!-- RETOUR AVANT -->
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-3 offset-2 class="download">
+      <button ion-button clear icon-only (click)="download()">
+        <!-- TELECHARGEMENT PDF -->
+        <ion-icon name="download"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-card>
+    <!-- BLOC COULEURS SELECTIONNEES -->
+    <ion-card-header>
+      Les références séléctionnées
+    </ion-card-header>
+    <ion-card-content>
+      {{acc}}
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-header>
 
 
 <ion-content padding>
 
-    <p> Référence séléctionnée: {{ref}}</p>
+
+
+  <ion-scroll scrollX="true" scrollY="true" style="white-space: nowrap; width: 100%; height: 100%;">
 
     <div id="grille">
-      <div *ngFor="let ligne of perles" class="ligne row">
-        <div *ngFor="let perle of ligne" class="perle" (click)="applyColor(perle)" [style.backgroundColor]="perle.color">
+      <div *ngFor="let ligne of perles; let i=index">
+        
+          <div [ngClass]="type === 'Brickstitch / Peyote' && i%2 === 0 ? 'decalage' : 'no-decalage'" class="ligne row">
+            <div *ngFor="let perle of ligne" class="perle" (click)="applyColor(perle)" [style.backgroundColor]="perle.color">
 
-        </div>
+            </div>
+          </div>
+       
+
       </div>
+
     </div>
+
+  </ion-scroll>
+
 
 
 </ion-content>
 
 <ion-footer class="footer">
-    <ion-toolbar>
-        <ion-list>
-            <ion-item>
-              <ion-label><ion-icon name="search"></ion-icon>
-                Références des perles </ion-label>
-              <ion-select [(ngModel)]="ref" (ionChange)="this.pickColor(ref)">               
-                <ion-option value="black">DB0001</ion-option>
-                <ion-option value="red">DB0002</ion-option>
-                <ion-option value="white">DB0003</ion-option>
-                <ion-option value="yellow">DB0004</ion-option>
-                <ion-option value="blue">DB0005</ion-option>
-                <ion-option value="green">DB0006</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-    </ion-toolbar>
-  </ion-footer>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="search"></ion-icon>
+          Références des perles </ion-label>
+        <ion-select [(ngModel)]="ref" (ionChange)="this.pickColor(ref)">
+          <ion-option *ngFor="let bead of beads" value="{{bead.color}}">{{bead.ref}}</ion-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>
